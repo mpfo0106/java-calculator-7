@@ -19,4 +19,8 @@ public class Calculator {
         }
         return input;
     }
+
+    private String[] splitInput(String input){
+        return input.split("[,:]");
+    }
 }
