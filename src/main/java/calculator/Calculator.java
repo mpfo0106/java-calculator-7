@@ -7,9 +7,11 @@ public class Calculator {
         try {
             String input = getInput();
             int[] numbers = parseNumbers(input);
+            int result = calculateSum(numbers);
+            System.out.println("결과 : " + result);
         }
         catch (IllegalArgumentException e){
-
+            System.out.println("잘못된 입력입니다: " + e.getMessage());
         }
     }
     private String getInput(){
@@ -51,4 +53,11 @@ public class Calculator {
         return numbers;
     }
 
+    private int calculateSum(int[] numbers) {
+        int sum = 0;
+        for (int num : numbers) {
+            sum += num;
+        }
+        return sum;
+    }
 }
