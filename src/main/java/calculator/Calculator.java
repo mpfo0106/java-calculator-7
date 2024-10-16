@@ -12,6 +12,7 @@ public class Calculator {
         }
         catch (IllegalArgumentException e){
             System.out.println("잘못된 입력입니다: " + e.getMessage());
+            throw e;
         }
     }
     private String getInput(){
@@ -24,6 +25,9 @@ public class Calculator {
     }
 
     private String[] splitInput(String input){
+        // 입력 문자열에 있는 익스케이프 문자 '\\n'을 '\n'으로 변환
+        input = input.replace("\\n", "\n");
+
         if(input.startsWith("//")){
             int index =input.indexOf("\n");
             if(index != -1){
