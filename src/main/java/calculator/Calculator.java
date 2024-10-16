@@ -21,6 +21,14 @@ public class Calculator {
     }
 
     private String[] splitInput(String input){
+        if(input.startsWith("//")){
+            int index =input.indexOf("\n");
+            if(index != -1){
+                String customDelimiter = input.substring(2,index);
+                String numberString = input.substring(index+1);
+                return numberString.split(customDelimiter);
+            }
+        }
         return input.split("[,:]");
     }
 }
