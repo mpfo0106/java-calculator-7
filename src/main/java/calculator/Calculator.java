@@ -6,6 +6,7 @@ public class Calculator {
     public void run(){
         try {
             String input = getInput();
+            int[] numbers = parseNumbers(input);
         }
         catch (IllegalArgumentException e){
 
@@ -31,4 +32,23 @@ public class Calculator {
         }
         return input.split("[,:]");
     }
+
+    private int[] parseNumbers(String input) {
+        String[] parts = splitInput(input);
+        int[] numbers = new int[parts.length];
+
+        for (int i = 0; i < numbers.length; i++) {
+            try {
+                int value = Integer.parseInt(parts[i].trim());
+                if (value < 0) {
+                    throw new IllegalArgumentException("음수는 허용되지 않습니다: " + numbers[i]);
+                }
+                numbers[i] = value;
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException("유효하지 않은 숫자입니다: " + parts[i]);
+            }
+        }
+        return numbers;
+    }
+
 }
